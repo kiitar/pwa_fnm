@@ -18,6 +18,7 @@ function App() {
 
     onMessageListener()
       .then((payload) => {
+        console.log(payload);
         const { title, body } = payload.data;
         console.log(`${title}; ${body}`);
       })
