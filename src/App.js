@@ -5,27 +5,27 @@ import { requestFirebaseNotificationPermission, onMessageListener } from "./fire
 
 function App() {
   const [token, setToken] = useState("");
-  useEffect(() => {
-    requestFirebaseNotificationPermission()
-      .then((firebaseToken) => {
-        // eslint-disable-next-line no-console
-        console.log(firebaseToken);
-        setToken(firebaseToken);
-      })
-      .catch((err) => {
-        return err;
-      });
+  // useEffect(() => {
+  requestFirebaseNotificationPermission()
+    .then((firebaseToken) => {
+      // eslint-disable-next-line no-console
+      console.log(firebaseToken);
+      setToken(firebaseToken);
+    })
+    .catch((err) => {
+      return err;
+    });
 
-    onMessageListener()
-      .then((payload) => {
-        console.log(payload);
-        const { title, body } = payload.data;
-        console.log(`${title}; ${body}`);
-      })
-      .catch((err) => {
-        console.log(JSON.stringify(err));
-      });
-  }, []);
+  onMessageListener()
+    .then((payload) => {
+      console.log(payload);
+      const { title, body } = payload.data;
+      console.log(`${title}; ${body}`);
+    })
+    .catch((err) => {
+      console.log(JSON.stringify(err));
+    });
+  // }, []);
 
   return (
     <div className="App">
