@@ -27,33 +27,7 @@ messaging.setBackgroundMessageHandler(function (payload) {
   return self.registration.showNotification(notificationTitle, notificationOptions);
 });
 
-self.addEventListener("notificationclick", (event) => {
-  console.log(event);
-  return event;
-});
-
-// messaging.setBackgroundMessageHandler(function (payload) {
-//   console.log("[firebase-messaging-sw.js] Received background message ", payload);
-//   // Customize notification here
-//   const notificationTitle = "Background Message Title";
-//   const notificationOptions = {
-//     body: "Background Message body.",
-//     icon: "/firebase-logo.png",
-//   };
-
-//   return self.registration.showNotification(notificationTitle, notificationOptions);
+// self.addEventListener("notificationclick", (event) => {
+//   console.log(event);
+//   return event;
 // });
-
-// if ("serviceWorker" in navigator) {
-//   navigator.serviceWorker
-//     .register("./firebase-messaging-sw.js")
-//     .then(function (registration) {
-//       // eslint-disable-next-line no-console
-//       console.log("[SW]: SCOPE: ", registration.scope);
-//       // return registration.scope;
-//     })
-//     .catch(function (err) {
-//       console.log(err);
-//       // return err;
-//     });
-// }

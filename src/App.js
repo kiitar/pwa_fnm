@@ -1,20 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { requestFirebaseNotificationPermission, onMessageListener } from "./firebaseInit";
 
 function App() {
   const [token, setToken] = useState("");
-  // useEffect(() => {
-  requestFirebaseNotificationPermission()
-    .then((firebaseToken) => {
-      // eslint-disable-next-line no-console
-      console.log(firebaseToken);
-      setToken(firebaseToken);
-    })
-    .catch((err) => {
-      return err;
-    });
 
   onMessageListener()
     .then((payload) => {
@@ -25,7 +15,18 @@ function App() {
     .catch((err) => {
       console.log(JSON.stringify(err));
     });
-  // }, []);
+
+  useEffect(() => {
+    requestFirebaseNotificationPermission()
+      .then((firebaseToken) => {
+        // eslint-disable-next-line no-console
+        console.log(firebaseToken);
+        setToken(firebaseToken);
+      })
+      .catch((err) => {
+        return err;
+      });
+  }, []);
 
   return (
     <div className="App">
